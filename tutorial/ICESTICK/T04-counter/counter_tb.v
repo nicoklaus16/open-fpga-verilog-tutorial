@@ -10,17 +10,23 @@ module counter_tb();
 //-- Registro para generar la señal de reloj
 reg clk = 0;
 
+reg rst = 1;
+
+reg en = 1;
+
 //-- Datos de salida del contador
-wire [25:0] data;
+wire [4:0] data;
 
 
 //-- Registro para comprobar si el contador cuenta correctamente
-reg [25:0] counter_check = 1;
+reg [4:0] counter_check = 1;
 
 
 //-- Instanciar el contador
-counter C1(
+counter #(.N(5)) C1(
 	.clk(clk),
+	.rst(rst),
+	.en(en),
 	.data(data)
 );
 
