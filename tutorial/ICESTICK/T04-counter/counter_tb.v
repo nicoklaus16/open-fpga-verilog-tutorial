@@ -5,7 +5,11 @@
 //-- BQ August 2015. Written by Juan Gonzalez (Obijuan)
 //-------------------------------------------------------------------
 
+
+
 module counter_tb();
+
+`define NWIDTH 5
 
 //-- Registro para generar la señal de reloj
 reg clk = 0;
@@ -15,15 +19,15 @@ reg rst = 1;
 reg en = 1;
 
 //-- Datos de salida del contador
-wire [4:0] data;
+wire [`NWIDTH:0] data;
 
 
 //-- Registro para comprobar si el contador cuenta correctamente
-reg [4:0] counter_check = 1;
+reg [`NWIDTH:0] counter_check = 1;
 
 
 //-- Instanciar el contador
-counter #(.N(5)) C1(
+counter #(.N(`NWIDTH)) C1(
 	.clk(clk),
 	.rst(rst),
 	.en(en),
