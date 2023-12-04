@@ -32,7 +32,7 @@ setbit_tb.vcd: setbit.v setbit_tb.v
 	./setbit_tb.out
 
 	#-- Ver visualmente la simulacion con gtkwave
-	gtkwave setbit_tb.vcd setbit_tb.gtkw &
+	gtkwave setbit_tb.vcd setbit_tb.gtkw
 
 #------------------------------
 #-- Sintesis completa

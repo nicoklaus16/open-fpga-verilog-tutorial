@@ -19,7 +19,6 @@
 //-- denominamos A. Este pin esta cableado a '1'
 //-----------------------------------------------------------------------------
 module setbit(output A);
-wire A;
 
 	//-- Implementacion: el pin esta cableado a '1'
   assign A = 1;
