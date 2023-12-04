@@ -36,10 +36,10 @@ mpres
   //-- Conectar los puertos 
   dut(
 	  .clk_in(clk),
-	  .D1(D1),
-    .D2(D2),
-    .D3(D3),
-    .D4(D4)
+	  .d1(D1),
+    .d2(D2),
+    .d3(D3),
+    .d4(D4)
   );
 
 

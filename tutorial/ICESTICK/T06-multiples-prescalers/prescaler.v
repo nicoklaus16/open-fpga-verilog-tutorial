@@ -7,12 +7,7 @@
 
 //-- Entrada: señal de reloj de entrada
 //-- Salida: Señal de reloj de salida, con menor frecuencia
-module prescaler(input clk_in, output clk_out);
-wire clk_in;
-wire clk_out;
-
-//-- Numero de bits del prescaler (por defecto)
-parameter N = 22;
+module prescaler #(parameter N=22)(input wire clk_in, output wire clk_out);
 
 //-- Registro para implementar contador de N bits
 reg [N-1:0] count = 0;
