@@ -14,11 +14,16 @@ reg clk = 0;
 wire [3:0] data;
 
 //-- Instanciar el componente
-blink4 #(.N(1))
+blink4 #(.N(1), .RegN(4))
   TOP (
 	  .clk(clk),
 	  .data(data)
   );
+
+/*initial
+begin
+    reg <= 4'b0;
+end*/
 
 //-- Generador de reloj. Periodo 2 unidades
 always #1 clk = ~clk;
