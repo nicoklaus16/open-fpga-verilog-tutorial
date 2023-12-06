@@ -2,7 +2,7 @@
 #-- Establecer nombre del componente
 #----------------------------------------
 NAME = shift4
-DEPS = prescaler.v
+DEPS = prescaler.v shiftreg.v initmod.v
 
 
 
@@ -34,7 +34,7 @@ sint: $(NAME).bin
 $(NAME)_tb.vcd: $(NAME).v $(DEPS) $(NAME)_tb.v
 	
 	#-- Compilar
-	iverilog $^ -o $(NAME)_tb.out
+	iverilog -o $(NAME)_tb.out $^
 	
 	#-- Simular
 	./$(NAME)_tb.out

@@ -33,7 +33,7 @@ initial begin
 	$dumpfile("shift4_tb.vcd");
 	$dumpvars(0, shift4_tb);
 
-	# 30 $display("FIN de la simulacion");
+	# 500 $display("FIN de la simulacion");
 	$finish;
 end
 
