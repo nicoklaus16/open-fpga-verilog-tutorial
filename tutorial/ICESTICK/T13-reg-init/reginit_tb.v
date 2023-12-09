@@ -1,40 +1,26 @@
-//-------------------------------------------------------------------
-//-- reginit_tb.v
-//-- Banco de pruebas para el secuenciador de 2 estados con registro
-//-- con precarga
-//-------------------------------------------------------------------
-//-- BQ August 2015. Written by Juan Gonzalez (Obijuan)
-//-------------------------------------------------------------------
+module reginit_tb.v ()
 
-module reginit_tb();
+parameter NPtb = 2;
+parameter INITtb = 0110;
 
-//-- Registro para generar la señal de reloj
 reg clk = 0;
+reg initsig = 0;
+wire net_clk;
+wire [3:0] din;
 
-//-- Datos de salida del componente
-wire [3:0] data;
-
-//-- Instanciar el componente, con prescaler de 1 bit (para la simulacion)
-reginit #(.NP(1))
-  dut(
-	  .clk(clk),
-	  .data(data)
-  );
-
-//-- Generador de reloj. Periodo 2 unidades
 always #1 clk = ~clk;
 
+prescaler #(.N(NPtb)
+    ) PRES1 (
+        .clk_in(clk),
+        .clk_out(net_clk)
+    );
 
-//-- Proceso al inicio
-initial begin
+always @ (posedge(net_clk))
+    initsig = 1;
 
-	//-- Fichero donde almacenar los resultados
-	$dumpfile("reginit_tb.vcd");
-	$dumpvars(0, reginit_tb);
+assign din = initsig ? ~dout : INITtb;
 
-	# 30 $display("FIN de la simulacion");
-	$finish;
-end
+
 
 endmodule
-
