@@ -1,26 +1,27 @@
-module reginit_tb.v ()
+module reginit_tb ();
 
 parameter NPtb = 2;
-parameter INITtb = 0110;
+parameter INItb = 4'b0110;
 
 reg clk = 0;
-reg initsig = 0;
-wire net_clk;
-wire [3:0] din;
+wire [3:0] data;
 
 always #1 clk = ~clk;
 
-prescaler #(.N(NPtb)
-    ) PRES1 (
-        .clk_in(clk),
-        .clk_out(net_clk)
+reginit #(.NP(1), .INI(INItb)
+    ) R1 (
+        .clk(clk),
+        .data(data)
     );
 
-always @ (posedge(net_clk))
-    initsig = 1;
+initial
+begin
+    $dumpfile("reginit_tb.vcd");
+    $dumpvars(0, reginit_tb);
 
-assign din = initsig ? ~dout : INITtb;
-
-
+    #30
+    $display("FIN SIMULACION");
+    $finish;
+end
 
 endmodule
