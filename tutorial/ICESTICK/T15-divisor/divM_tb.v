@@ -13,7 +13,7 @@ wire clk_out;
 
 
 //-- Instanciar el componente y establecer el valor del divisor
-divM #(5)
+divM #(8)
   dut(
     .clk_in(clk),
     .clk_out(clk_out)

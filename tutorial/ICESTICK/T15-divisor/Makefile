@@ -37,7 +37,7 @@ sint: $(NAME).bin
 $(NAME)_tb.vcd: $(NAME).v $(DEPS) $(NAME)_tb.v
 	
 	#-- Compilar
-	iverilog $^ -o $(NAME)_tb.out
+	iverilog -o $(NAME)_tb.out $^
 	
 	#-- Simular
 	./$(NAME)_tb.out
@@ -83,7 +83,7 @@ sint2: $(NAME2).bin
 $(NAME2)_tb.vcd: $(NAME2).v $(DEPS2) $(NAME2)_tb.v
 	
 	#-- Compilar
-	iverilog $^ -o $(NAME2)_tb.out
+	iverilog -o $(NAME2)_tb.out $^
 	
 	#-- Simular
 	./$(NAME2)_tb.out
